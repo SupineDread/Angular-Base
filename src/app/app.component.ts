@@ -10,11 +10,10 @@ export class AppComponent implements OnInit {
   title = 'Sockets basic';
 
   constructor(
-    private wsService: WebsocketService
+    private wsService: WebsocketService,
   ) {}
 
   ngOnInit() {
-    // p
   }
 
 }
