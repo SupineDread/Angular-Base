@@ -12,7 +12,7 @@ export class ChatService {
 
   sendMessage(mensaje: string) {
     const payload = {
-      from: 'Haziel',
+      from: this.wsWervice.getUsuario().nombre,
       content: mensaje
     };
     this.wsWervice.emit('mensaje', payload);
