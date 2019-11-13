@@ -14,16 +14,17 @@ export class WebsocketService {
     private socket: Socket
   ) {
     this.cargarStorage();
-    this.checkstatus();
+    this.checkStatus();
   }
 
-  checkstatus() {
+  checkStatus() {
     this.socket.on('connect', () => {
-      console.log('Conectado al servidor');
+      // console.log('Conectado al servidor');
       this.socketStatus = true;
+      this.cargarStorage();
     });
     this.socket.on('disconnect', () => {
-      console.log('desconectado del servidor');
+      // console.log('desconectado del servidor');
       this.socketStatus = false;
     });
   }

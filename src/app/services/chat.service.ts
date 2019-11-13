@@ -7,19 +7,31 @@ import { WebsocketService } from './websocket.service';
 export class ChatService {
 
   constructor(
-    private wsWervice: WebsocketService
+    private wsService: WebsocketService
   ) { }
 
   sendMessage(mensaje: string) {
     const payload = {
-      from: this.wsWervice.getUsuario().nombre,
+      from: this.wsService.getUsuario().nombre,
       content: mensaje
     };
-    this.wsWervice.emit('mensaje', payload);
+    this.wsService.emit('mensaje', payload);
   }
 
   getMessages() {
-    return this.wsWervice.listen('mensaje-nuevo');
+    return this.wsService.listen('mensaje-nuevo');
+  }
+
+  getMessagesPrivate() {
+    return this.wsService.listen('mensaje-privado');
+  }
+
+  getUsuariosActivos() {
+    return this.wsService.listen('usuarios-activos');
+  }
+
+  emitirUsuariosActivos() {
+    this.wsService.emit('obtener-usuarios');
   }
 
 }
